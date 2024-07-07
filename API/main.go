@@ -44,7 +44,7 @@ func bookById(c *gin.Context) {
 	book, err := getBookById(id)
 
 	if err != nil {
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Book not found"})
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "book not found"})
 		return
 	}
 
@@ -56,10 +56,10 @@ func getBookById(id string) (*book, error) {
 	for i, b := range books {
 		if b.ID == id {
 			return &books[i], nil
-		} else {
-			return nil, errors.New("Book not found")
 		}
 	}
+
+	return nil, errors.New("book not found")
 }
 
 
